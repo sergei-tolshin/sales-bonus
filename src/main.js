@@ -80,6 +80,7 @@ function analyzeSalesData(data, options) {
 
     const { calculateRevenue, calculateBonus } = options;
 
+    // Подготовка промежуточных данных для сбора статистики
     const sellerStats = data.sellers.map(seller => ({
         id: seller.id,
         name: `${seller.first_name} ${seller.last_name}`,
@@ -89,7 +90,9 @@ function analyzeSalesData(data, options) {
         products_sold: {}
     }));
 
-    // @TODO: Индексация продавцов и товаров для быстрого доступа
+    // Индексация продавцов и товаров для быстрого доступа
+    const sellerIndex = Object.fromEntries(sellerStats.map(seller => [seller.id, seller]));
+    const productIndex = Object.fromEntries(data.products.map(product => [products.sku, product]));
 
     // @TODO: Расчет выручки и прибыли для каждого продавца
 
