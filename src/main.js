@@ -92,7 +92,7 @@ function analyzeSalesData(data, options) {
 
     // Индексация продавцов и товаров для быстрого доступа
     const sellerIndex = Object.fromEntries(sellerStats.map(seller => [seller.id, seller]));
-    const productIndex = Object.fromEntries(data.products.map(product => [products.sku, product]));
+    const productIndex = Object.fromEntries(data.products.map(product => [product.sku, product]));
 
     // Расчет выручки и прибыли для каждого продавца
     data.purchase_records.forEach(record => { // Чек 
